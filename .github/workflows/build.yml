@@ -8,15 +8,14 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build with Buildozer
-        # تم تصحيح اسم المسار هنا لضمان الوصول للمستودع الصحيح
-        uses: ArtemSerebriennikov/buildozer-action@v1
+        # تم استبدال الأداة السابقة بأداة نشطة وموثوقة
+        uses: GearSnd/buildozer-action@v1
         with:
           buildozer_version: master
           command: buildozer android debug
 
       - name: Upload APK
-        # استخدام الإصدار v4 لضمان عدم حدوث أخطاء الرفع
         uses: actions/upload-artifact@v4
         with:
-          name: package
+          name: ZamilApp-Package
           path: bin/*.apk
