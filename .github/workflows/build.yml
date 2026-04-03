@@ -7,21 +7,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Dependencies
+      - name: Install and Build
         run: |
           sudo apt update
-          # تم تحديث libtinfo5 إلى libtinfo6 وإضافة -y لكل الأوامر لضمان عدم توقف البناء
           sudo apt install -y git zip unzip openjdk-17-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo6 cmake libffi-dev libssl-dev
+         
+          # تثبيت الأدوات
           pip3 install --user --upgrade buildozer cython virtualenv
-
-      - name: Build with Buildozer
-        run: |
+         
+          # إضافة المسار للبيئة الحالية وتنفيذ البناء مباشرة
           export PATH=$PATH:$HOME/.local/bin
-          # إضافة --yes للموافقة التلقائية على شروط SDK أثناء البناء
           buildozer android debug --yes
        
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: ZamilApp-Final
+          name: ZamilApp-Package
           path: bin/*.apk
