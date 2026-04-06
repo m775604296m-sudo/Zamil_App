@@ -1,27 +1,23 @@
 name: Build APK
-on: [push, pull_request]
+
+on: [push, pull_request] # سيعمل التحديث تلقائياً عند رفع كود جديد
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - name: Install and Build
-        run: |
-          # 1. تحديث النظام وتثبيت المكتبات اللازمة للنسخة الحديثة
-          sudo apt update
-          sudo apt install -y git zip unzip openjdk-17-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo6 cmake libffi-dev libssl-dev
-          
-          # 2. تثبيت Buildozer و Cython في بيئة المستخدم
-          pip3 install --user --upgrade buildozer cython virtualenv
-          
-          # 3. الحل الجذري: تفعيل المسار وتشغيل البناء في أمر واحد متصل
-          export PATH=$PATH:$HOME/.local/bin
-          buildozer android debug --yes
-        
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Buildozer Action
+        uses: ArtemSBulat/buildozer-action@v1
         with:
-          name: ZamilApp-Final
+          buildozer_version: master
+          python_version: 3.8
+          subcommand: debug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: package
           path: bin/*.apk
