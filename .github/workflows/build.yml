@@ -1,23 +1,24 @@
 name: Build APK
 
-on: [push, pull_request] # سيعمل التحديث تلقائياً عند رفع كود جديد
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v4 # تحديث للإصدار 4
 
-      - name: Buildozer Action
-        uses: ArtemSBulat/buildozer-action@v1
+      - name: Build with Buildozer
+        uses: ArtemSBulat/buildozer-action@v1 # تأكد من كتابة الاسم هكذا تماماً
         with:
           buildozer_version: master
-          python_version: 3.8
+          python_version: 3.11
           subcommand: debug
 
       - name: Upload APK
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4 # تحديث للإصدار 4 لحل مشكلة deprecation
         with:
-          name: package
+          name: ZamilApp-Package
           path: bin/*.apk
