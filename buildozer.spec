@@ -15,18 +15,14 @@ source.dir = .
 # (list) Source files to include
 source.include_exts = py,png,jpg,kv,atlas,ttf,json
 
-# (list) List of inclusions using pattern matching
-source.include_patterns = assets/*,images/*
-
 # (str) Application versioning
 version = 1.0
 
 # (list) Application requirements
-# ملاحظة: تم حذف تحديد الإصدارات لضمان اختيار النسخ الأكثر استقراراً مع أندرويد 13
-requirements = python3, kivy, kivymd, arabic_reshaper, python-bidi
+# تم إضافة pillow وتحديد الإصدارات لضمان استقرار البناء وتجنب أخطاء التجميع
+requirements = python3, kivy==2.3.0, kivymd==1.2.0, pillow, arabic_reshaper, python-bidi
 
 # (str) Presplash of the application
-# تم توجيهه للصورة الموجودة في المجلد الرئيسي لتجنب أخطاء المسارات
 presplash.filename = %(source.dir)s/avatar.png
 
 # (str) Icon of the application
@@ -39,7 +35,7 @@ orientation = portrait
 fullscreen = 0
 
 # (list) Permissions
-# تم إضافة صلاحيات الوسائط لتوافق أندرويد 13 (API 33)
+# تم إضافة READ_MEDIA_AUDIO لدعم تشغيل الزوامل على أندرويد 13 فما فوق
 android.permissions = INTERNET, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE, READ_MEDIA_AUDIO
 
 # (int) Target Android API
@@ -59,7 +55,7 @@ android.accept_sdk_license = True
 
 [buildozer]
 
-# (int) Log level (2 لإظهار كافة التفاصيل وفهم أسباب الفشل إن حدثت)
+# (int) Log level (2 لإظهار كافة التفاصيل وفهم أسباب الفشل)
 log_level = 2
 
 # (int) Display warning if buildozer is run as root
