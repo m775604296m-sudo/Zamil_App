@@ -12,21 +12,17 @@ package.domain = org.alslbh
 # (str) Source code where the main.py live
 source.dir = .
 
-# (list) Source files to include
+# (list) Source files to include (تم إضافة mp3 هنا)
 source.include_exts = py,png,jpg,kv,atlas,ttf,json,mp3
-
-# (list) List of inclusions using pattern matching
-# إضافة هذا السطر لضمان تضمين المجلدات بالكامل
-source.include_patterns = assets/*,assets/font/*,assets/images/*,assets/music/*
 
 # (str) Application versioning
 version = 0.1
 
-# (list) Application requirements 
-# ملاحظة: تم استخدام الفاصلة بدون مسافات وهو أمر ضروري جداً هنا
-requirements = python3,kivy==2.3.0,kivymd==1.2.0,arabic_reshaper,python-bidi,pillow,hostpython3
+# (list) Application requirements (تم إضافة pillow و تحديد إصدار Cython لاحقاً)
+requirements = python3,kivy==2.3.0,kivymd==1.2.0,arabic_reshaper,python-bidi,pillow
 
 # (str) Presplash and Icon
+# تأكد أن المسارات مطابقة لما هو موجود في مجلد assets لديك
 presplash.filename = %(source.dir)s/assets/images/avatar.png
 icon.filename = %(source.dir)s/assets/images/avatar.png
 
@@ -40,8 +36,7 @@ fullscreen = 0
 android.permissions = INTERNET, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE
 
 # (int) Target Android API
-# نصيحة: الـ API 31 أكثر استقراراً في بيئات الكلاود
-android.api = 31
+android.api = 33
 
 # (int) Minimum API support
 android.minapi = 21
