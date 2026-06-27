@@ -1,54 +1,19 @@
 [app]
-
-# (str) Title of your application
-title = Zamil Ibrahim Al-Malsi
-
-# (str) Package name
+title = Zamil App
 package.name = zamilapp
-
-# (str) Package domain
-package.domain = org.alslbh
-
-# (str) Source code where the main.py live
+package.domain = org.test.zamil
 source.dir = .
-
-# (list) Source files to include (تم إضافة mp3 هنا)
-source.include_exts = py,png,jpg,kv,atlas,ttf,json,mp3
-
-# (str) Application versioning
+source.include_exts = py,png,jpg,kv,atlas,ttf,mp3
 version = 0.1
-
-# (list) Application requirements (تم إضافة pillow و تحديد إصدار Cython لاحقاً)
-requirements = python3,kivy==2.3.0,kivymd==1.2.0,arabic_reshaper,python-bidi,pillow
-
-# (str) Presplash and Icon
-# تأكد أن المسارات مطابقة لما هو موجود في مجلد assets لديك
-presplash.filename = %(source.dir)s/assets/images/avatar.png
-icon.filename = %(source.dir)s/assets/images/avatar.png
-
-# (list) Supported orientations
+requirements = python3,kivy,kivymd,arabic-reshaper,python-bidi,pillow
 orientation = portrait
-
-# (bool) Indicate if the application should be fullscreen or not
-fullscreen = 0
-
-# (list) Permissions
-android.permissions = INTERNET, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE
-
-# (int) Target Android API
+android.permissions = INTERNET
 android.api = 33
-
-# (int) Minimum API support
 android.minapi = 21
-
-# (bool) Enable AndroidX support
-android.enable_androidx = True
-
-# (list) The Android archs to build for
-android.archs = arm64-v8a, armeabi-v7a
-
-# (bool) automatically accept SDK license
+android.ndk_api = 21
+android.ndk = 25b
 android.accept_sdk_license = True
+android.archs = arm64-v8a
 
 [buildozer]
 log_level = 2
