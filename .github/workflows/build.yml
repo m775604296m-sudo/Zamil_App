@@ -8,19 +8,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Build with Buildozer
         uses: ArtemSBulgakov/buildozer-action@v1
         with:
           buildozer_version: stable
         env:
-          # إذا كان هناك خطأ في المسارات تأكد من إضافة المتغيرات هنا
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        # تم التعديل هنا إلى v4 لحل مشكلة الإيقاف
+        uses: actions/upload-artifact@v4
         with:
           name: package
           path: bin/*.apk
-
